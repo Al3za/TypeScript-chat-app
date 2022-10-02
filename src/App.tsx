@@ -1,5 +1,5 @@
 import React from 'react';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import Styled from 'styled-components';
 import './App.css';
 
@@ -9,14 +9,11 @@ const Input = Styled.input`margin: 5px; padding:5px; color: #555; background: pa
 const Message= Styled.p`margin: 5px; padding:5px; color: #555; background: papaya-whip`
 
                          /*props är lika med en objekt, som har två functioner som property {onSend:(message:string)=>{}, onCancel: ()=> void }, 
-                         som den ena här function har som parameter en sträng, och den andra ä r tom */
-const MessageSendButton = (props: { onSend: (message: string) => void /*, onCancel: ()=> void*/ }) => {
+                         som den ena här function har som parameter en string, och den andra ä r tom */
+const MessageSendButton = (props: { onSend: (Msg: string) => void /*, onCancel: ()=> void*/ }) => {
 
   const [message, setMessage] = useState  < string > ('');
  
-  // const props = {
-  //   onsend:(message:string)=>{}
-  // }
   
   return (
     <>
@@ -30,16 +27,10 @@ function App() {
 
   const [messages, setMessages] = useState<string[]>([]);
 
-    const sendMessage = (message: string) => {
-      setMessages([...messages, message])
-      console.log(messages.length)
+    const sendMessage = (newMessage: string) => {
+      setMessages([...messages, newMessage])
     }
-  
-
-
-  // const HandleOnCancel=()=>{
-  // return console.log('hej)
-  //   };  
+   
   
   return (
     <div className="App">
